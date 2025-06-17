@@ -28,6 +28,7 @@ class MainForm(QMainWindow, Ui_mainForm.Ui_MainWindow):
 
 
 if __name__ == "__main__":
+    '''handled exception in start app and save posible errors in errors_log.txt'''
     try:
         app = QApplication(sys.argv)
         MainWin = MainForm()
