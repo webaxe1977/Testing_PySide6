@@ -1,0 +1,6 @@
+/.venv/
+/ui/
+__pycache__
+.mypy_cache
+errors_log.txt
+
