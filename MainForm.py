@@ -5,26 +5,39 @@ from datetime import datetime
 import traceback
 import Ui_mainForm
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QWidget
+from methods.main_form_methods import start_app, close_app, test_messagebox, test_statusbar
+
 
 
 class MainForm(QMainWindow, Ui_mainForm.Ui_MainWindow):
     def __init__(self):
-        QMainWindow.__init__(self)
+        super().__init__()
         self.setupUi(self)
+
+        # logging start app
+        start_app()
+
+
 
         # connection to signals and slots
         self.pb_quit.clicked.connect(self.close_app)
-
-
-
-
-
+        self.pb_test_messagebox.clicked.connect(self.test_qmessagebox)
+        self.pb_send.clicked.connect(self.test_statusbar)
 
 
     def close_app(self):
-        '''correct close application'''
-        QMessageBox.information(self, 'Information', 'Application now closed.\nBay, see you!')
-        QApplication.quit()
+        '''calling method from methods folder'''
+        close_app(self)
+
+    def test_qmessagebox(self):
+        '''calling method from methods folder'''
+        test_messagebox(self)
+
+    def test_statusbar(self):
+        if not self.le_send.text().strip():
+            QMessageBox.warning(self, 'Warning!', 'Enter any phrase!')
+            return
+        self.statusbar.showMessage(test_statusbar(self.le_send.text()))
 
 
 if __name__ == "__main__":
