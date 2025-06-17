@@ -4,4 +4,3 @@ __pycache__
 .mypy_cache
 errors_log.txt
 start_stop_app.txt
-
