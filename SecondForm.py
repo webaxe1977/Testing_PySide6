@@ -4,12 +4,16 @@ import sys
 import traceback
 import Ui_SecondForm
 from datetime import datetime
-from methods.second_form_methods import test_messagebox, close_second_window, clear_label
+from methods.second_form_methods import (
+    test_messagebox,
+    close_second_window,
+    clear_label,
+)
 from PySide6.QtWidgets import QWidget, QMessageBox, QApplication
 
 
 class SecondForm(QWidget, Ui_SecondForm.Ui_Form):
-    def __init__(self, some_string=''):
+    def __init__(self, some_string=""):
         self.some_string = some_string
         super().__init__()
         self.setupUi(self)
@@ -29,9 +33,8 @@ class SecondForm(QWidget, Ui_SecondForm.Ui_Form):
         clear_label(self)
 
 
-
 if __name__ == "__main__":
-    '''handled exception in start app and save posible errors in errors_log.txt'''
+    """handled exception in start app and save posible errors in errors_log.txt"""
     try:
         app = QApplication(sys.argv)
         SecondWin = SecondForm()
@@ -47,5 +50,7 @@ if __name__ == "__main__":
             f"{current_datetime}\n{error_trace}\n{e}\n",
         )
         with open("errors_log.txt", "a", encoding="utf-8") as file:
-            file.write(f"SeconfForm launch error:\n{current_datetime}\n{error_trace}\n{e}\n{'=' * 90}\n\n")
+            file.write(
+                f"SeconfForm launch error:\n{current_datetime}\n{error_trace}\n{e}\n{'=' * 90}\n\n"
+            )
         print(error_trace)

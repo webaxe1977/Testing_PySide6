@@ -28,14 +28,18 @@ def close_app(window):
 
     QApplication.quit()
 
+
 def test_messagebox(window):
     """Test QMessageBox"""
-    QMessageBox.information(window, 'Information', 'Simple test QMessageBox!\nTest! Test!\nLOL!')
+    QMessageBox.information(
+        window, "Information", "Simple test QMessageBox!\nTest! Test!\nLOL!"
+    )
+
 
 def test_statusbar(main_window):
-    '''Test statusbar'''
+    """Test statusbar"""
     if not main_window.le_send.text().strip():
-        QMessageBox.warning(main_window, 'Warning!', 'Enter any phrase!')
+        QMessageBox.warning(main_window, "Warning!", "Enter any phrase!")
         return
 
     text = main_window.le_send.text()
