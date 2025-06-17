@@ -34,10 +34,8 @@ class MainForm(QMainWindow, Ui_mainForm.Ui_MainWindow):
         test_messagebox(self)
 
     def test_statusbar(self):
-        if not self.le_send.text().strip():
-            QMessageBox.warning(self, 'Warning!', 'Enter any phrase!')
-            return
-        self.statusbar.showMessage(test_statusbar(self.le_send.text()))
+        from methods.main_form_methods import test_statusbar
+        test_statusbar(self)
 
 
 if __name__ == "__main__":

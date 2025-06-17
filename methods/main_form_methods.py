@@ -32,6 +32,11 @@ def test_messagebox(window):
     """Test QMessageBox"""
     QMessageBox.information(window, 'Information', 'Simple test QMessageBox!\nTest! Test!\nLOL!')
 
-def test_statusbar(some_string):
+def test_statusbar(main_window):
     '''Test statusbar'''
-    return some_string
+    if not main_window.le_send.text().strip():
+        QMessageBox.warning(main_window, 'Warning!', 'Enter any phrase!')
+        return
+
+    text = main_window.le_send.text()
+    main_window.statusbar.showMessage(f"Processed: {text.upper()}", 3000)
